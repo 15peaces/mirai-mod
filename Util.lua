@@ -1,7 +1,7 @@
 --------------------------------------------------
 -- Util.lua for Mir AI
 --------------------------------------------------
-require "AI.USER_AI.Const"
+require "AI_sakray.USER_AI.Const"
 
 --------------------------------------------------
 function IsMonster2(ID)
@@ -64,7 +64,7 @@ end
 -- ### Friends ###################################
 --------------------------------------------------
 Friends = {}
-FRIENDLIST_FILE = "AI/USER_AI/Friends.txt"
+FRIENDLIST_FILE = "AI_sakray/USER_AI/Friends.txt"
 
 --------------------------------------------------
 function FriendList_Clear()

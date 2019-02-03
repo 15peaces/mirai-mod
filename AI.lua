@@ -5,12 +5,12 @@
 MIRAI_VER = 122
 MIRAI_MOD_VER = 220
 
-require "AI.USER_AI.Const"
-require "AI.USER_AI.Util"
-require "AI.USER_AI.Config" -- configuration file
-require "AI.USER_AI.PassiveDB"
-require "AI.USER_AI.Patrol"
-require "AI.USER_AI.SelectedMod" -- 3rd party changes
+require "AI_sakray.USER_AI.Const"
+require "AI_sakray.USER_AI.Util"
+require "AI_sakray.USER_AI.Config" -- configuration file
+require "AI_sakray.USER_AI.PassiveDB"
+require "AI_sakray.USER_AI.Patrol"
+require "AI_sakray.USER_AI.SelectedMod" -- 3rd party changes
 
 --------------------------------------------------
 -- State
@@ -322,7 +322,7 @@ function OnFOLLOW_CMD()
 --------------------------------------------------
 	isCircling = false
 	if (MyState ~= FOLLOW_CMD_ST) then
-		local file = io.open("AI/USER_AI/follow.lck", "wb")
+		local file = io.open("AI_sakray/USER_AI/follow.lck", "wb")
 		if file then file:close() end
 		MoveToOwner(MyID)
 		MyState = FOLLOW_CMD_ST
@@ -331,8 +331,8 @@ function OnFOLLOW_CMD()
 		MySkill = 0
 		Log("OnFOLLOW_CMD")
 	else
-		if FileExists("AI/USER_AI/follow.lck") then
-			os.remove("AI/USER_AI/follow.lck")
+		if FileExists("AI_sakray/USER_AI/follow.lck") then
+			os.remove("AI_sakray/USER_AI/follow.lck")
 		end
 		MyState = IDLE_ST
 		IdleStartTime = GetTick()
@@ -2080,7 +2080,7 @@ function AI(myid)
 		stdMove = Move; Move = limMove -- replace Move with the protected version
 		StartupTime = GetTick()
 		IdleStartTime = StartupTime
-		if FileExists("AI/USER_AI/follow.lck") then
+		if FileExists("AI_sakray/USER_AI/follow.lck") then
 			MyState = FOLLOW_CMD_ST
 		end
 		ModInit() -- initialize the mod too
